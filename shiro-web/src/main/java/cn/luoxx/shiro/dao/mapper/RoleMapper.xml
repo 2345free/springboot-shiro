@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.luoxx.shiro.dao.RoleMapper">
+  <resultMap id="BaseResultMap" type="cn.luoxx.shiro.entity.Role">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="role_name" jdbcType="VARCHAR" property="roleName" />
+  </resultMap>
+  <insert id="insert" parameterType="cn.luoxx.shiro.entity.Role">
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_role (id, role_name)
+    values (#{id,jdbcType=INTEGER}, #{roleName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.luoxx.shiro.entity.Role">
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_role
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      id,
+      <if test="roleName != null">
+        role_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      #{id,jdbcType=INTEGER},
+      <if test="roleName != null">
+        #{roleName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>
