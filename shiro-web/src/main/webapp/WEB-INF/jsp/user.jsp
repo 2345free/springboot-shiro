@@ -7,7 +7,7 @@
     <title>用户列表</title>
   </head>
   <body>
-    <h1>${message }</h1>
+    <h1>user page</h1>
     <h1>用户列表--<a href="${pageContext.request.contextPath }/logout">退出登录</a>    </h1>
     <h2>权限列表</h2>
     <shiro:authenticated>用户已经登录显示此内容<br/></shiro:authenticated><br/>
@@ -28,6 +28,6 @@
         </c:forEach>
     </ul>
     <img alt="" src="${pageContext.request.contextPath }/pic.jpg">
-    <script type="text/javascript" src="${pageContext.request.contextPath }/webjarslocator/jquery/jquery.js"></script>
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
   </body>
 </html>

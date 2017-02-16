@@ -26,13 +26,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import cn.luoxx.shiro.dao.IUserDao;
 import cn.luoxx.shiro.entity.User;
 
-/**
- * Shiro测试Controller
- *
- * @author   单红宇(365384722)
- * @myblog  http://blog.csdn.net/catoop/
- * @create    2016年1月13日
- */
 @Controller
 public class ShiroController {
 

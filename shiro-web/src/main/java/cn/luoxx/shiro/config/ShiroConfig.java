@@ -21,10 +21,6 @@ import cn.luoxx.shiro.service.StudentService;
 
 /**
  * Shiro 配置
- *
- * @author   单红宇(365384722)
- * @myblog  http://blog.csdn.net/catoop/
- * @create    2016年1月13日
  */
 @Configuration
 public class ShiroConfig {
@@ -52,11 +48,8 @@ public class ShiroConfig {
      * 在项目使用中你可能会因为一些很但疼的问题最后采用它， 想使用它你可能需要看官网或者已经很了解Shiro的处理原理了）
      * 2. 直接使用ShiroFilterFactoryBean（这种方法比较简单，其内部对ShiroFilter做了组装工作，无法自己定义UrlPattern，
      * 默认拦截 /*）
-     *
      * @param dispatcherServlet
      * @return
-     * @author SHANHY
-     * @create  2016年1月13日
      */
 //  @Bean
 //  public FilterRegistrationBean filterRegistrationBean() {
@@ -99,9 +92,6 @@ public class ShiroConfig {
 
     /**
      * 加载shiroFilter权限控制规则（从数据库读取然后配置）
-     *
-     * @author SHANHY
-     * @create  2016年1月14日
      */
     private void loadShiroFilterChain(ShiroFilterFactoryBean shiroFilterFactoryBean, StudentService stuService, IScoreDao scoreDao){
         /////////////////////// 下面这些规则配置最好配置到配置文件中 ///////////////////////
@@ -122,13 +112,10 @@ public class ShiroConfig {
      * ShiroFilter<br/>
      * 注意这里参数中的 StudentService 和 IScoreDao 只是一个例子，因为我们在这里可以用这样的方式获取到相关访问数据库的对象，
      * 然后读取数据库相关配置，配置到 shiroFilterFactoryBean 的访问规则中。实际项目中，请使用自己的Service来处理业务逻辑。
-     *
      * @param myShiroRealm
      * @param stuService
      * @param scoreDao
      * @return
-     * @author SHANHY
-     * @create  2016年1月14日
      */
     @Bean(name = "shiroFilter")
     public ShiroFilterFactoryBean getShiroFilterFactoryBean(DefaultWebSecurityManager securityManager, StudentService stuService, IScoreDao scoreDao) {
