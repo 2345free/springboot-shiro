@@ -1,14 +1,14 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page pageEncoding="UTF-8"%>
 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
+    <%@include file="common/base.jsp" %>
     <title>用户列表</title>
   </head>
   <body>
     <h1>user page</h1>
-    <h1>用户列表--<a href="${pageContext.request.contextPath }/logout">退出登录</a>    </h1>
+    <h1>用户列表--<a href="${path }/logout">退出登录</a>    </h1>
     <h2>权限列表</h2>
     <shiro:authenticated>用户已经登录显示此内容<br/></shiro:authenticated><br/>
     <shiro:hasRole name="manager">manager角色登录显示此内容<br/></shiro:hasRole>
@@ -24,10 +24,18 @@
     <br/>所有用户列表：<br/>
     <ul>
         <c:forEach items="${userList }" var="user">
-            <li>用户名：${user.username }----密码：${user.password }----<a href="${pageContext.request.contextPath }/user/edit/${user.id}">修改用户（测试根据不同用户可访问权限不同，本例tom无权限，jack有权限）</a></li>
+            <li>用户名：${user.username }----密码：${user.password }----<a href="${path }/user/edit/${user.id}">修改用户（测试根据不同用户可访问权限不同，本例tom无权限，jack有权限）</a></li>
         </c:forEach>
     </ul>
-    <img alt="" src="${pageContext.request.contextPath }/pic.jpg">
-    <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    <img alt="" src="${path }/pic.jpg">
+    
+    <!-- Web前端资源打包成Java的Jar包，然后借助Maven这些依赖库的管理  -->
+    <script type="text/javascript" src="/webjars-locator/jquery/jquery.js">"></script>
+	<%--
+	<!-- spring boot 默认的静态资源映射规则  -->
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <!-- jstl 标签设置固定的cdn路径  -->
+	<script type="text/javascript" src="${jqueryCdnUrl }"></script>
+	 --%>
   </body>
 </html>

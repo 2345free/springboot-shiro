@@ -1,15 +1,20 @@
 package cn.luoxx.shiro.entity;
 
+import java.beans.Transient;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class User {
 
     private Integer id;
+    @NotEmpty(message = "用户名不能为空")
     private String username;
-    private String password;    
+    @NotEmpty(message = "密码不能为空")
+    private String password;
     private List<Role> roleList=new ArrayList<Role>();// 一个用户具有多个角色
 
     public User() {
@@ -54,6 +59,7 @@ public class User {
 		this.roleList = roleList;
 	}
 
+	@Transient //翻译：短暂的，瞬态 作用：表示该属性并非一个到数据库表的字段的映射,ORM框架将忽略该属性.
 	public Set<String> getRolesName() {
         List<Role> roles = getRoleList();
         Set<String> set = new HashSet<String>();

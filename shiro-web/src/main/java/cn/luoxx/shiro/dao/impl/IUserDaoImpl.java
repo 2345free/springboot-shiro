@@ -27,6 +27,7 @@ public class IUserDaoImpl extends BaseDao implements IUserDao{
 					user.setId(row.getInt("id"));
 					user.setUsername(row.getString("username"));
 					user.setPassword(row.getString("password"));
+					logger.info("user:{}",user);
 				}
 				return user;
 			}

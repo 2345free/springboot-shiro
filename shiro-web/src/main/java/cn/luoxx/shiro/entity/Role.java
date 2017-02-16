@@ -1,5 +1,6 @@
 package cn.luoxx.shiro.entity;
 
+import java.beans.Transient;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +43,7 @@ public class Role {
 		this.userList = userList;
 	}
 
+	@Transient //翻译：短暂的，瞬态 作用：表示该属性并非一个到数据库表的字段的映射,ORM框架将忽略该属性.
 	public List<String> getPermissionsName() {
         List<String> list = new ArrayList<String>();
         List<Permission> perlist = getPermissionList();

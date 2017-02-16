@@ -20,17 +20,17 @@ import org.apache.shiro.mgt.SecurityManager;
 public class MShiroFilterFactoryBean extends ShiroFilterFactoryBean {
 
     // 对ShiroFilter来说，需要直接忽略的请求
-    private Set<String> ignoreExt;
+    private Set<String> ignore;
 
     public MShiroFilterFactoryBean() {
         super();
-        ignoreExt = new HashSet<>();
-        ignoreExt.add(".jpg");
-        ignoreExt.add(".png");
-        ignoreExt.add(".gif");
-        ignoreExt.add(".bmp");
-        ignoreExt.add(".js");
-        ignoreExt.add(".css");
+        ignore = new HashSet<>();
+        ignore.add(".jpg");
+        ignore.add(".png");
+        ignore.add(".gif");
+        ignore.add(".bmp");
+        ignore.add(".js");
+        ignore.add(".css");
     }
 
     @Override
@@ -80,7 +80,7 @@ public class MShiroFilterFactoryBean extends ShiroFilterFactoryBean {
             int idx = 0;
             if(( idx = str.indexOf(".")) > 0){
                 str = str.substring(idx);
-                if(ignoreExt.contains(str.toLowerCase()))
+                if(ignore.contains(str.toLowerCase()))
                     flag = false;
             }
             if(flag){

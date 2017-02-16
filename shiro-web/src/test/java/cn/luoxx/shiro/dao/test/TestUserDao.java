@@ -10,6 +10,8 @@ import cn.luoxx.shiro.dao.IUserDao;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
+//@SpringApplicationConfiguration
+//@WebAppConfiguration
 public class TestUserDao {
 	
 	@Autowired  

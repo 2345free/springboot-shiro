@@ -28,10 +28,10 @@ public class ShiroConfig {
     private static final Logger logger = LoggerFactory.getLogger(ShiroConfig.class);
 
     @Bean
-    public EhCacheManager getEhCacheManager() {  
-        EhCacheManager em = new EhCacheManager();  
-        em.setCacheManagerConfigFile("classpath:ehcache-shiro.xml");  
-        return em;  
+    public EhCacheManager getEhCacheManager() {
+        EhCacheManager cacheManager = new EhCacheManager();  
+        cacheManager.setCacheManagerConfigFile("classpath:ehcache-shiro.xml");  
+        return cacheManager;
     }  
 
     @Bean(name = "myShiroRealm")
@@ -76,11 +76,11 @@ public class ShiroConfig {
 
     @Bean(name = "securityManager")
     public DefaultWebSecurityManager getDefaultWebSecurityManager(MyShiroRealm myShiroRealm) {
-        DefaultWebSecurityManager dwsm = new DefaultWebSecurityManager();
-        dwsm.setRealm(myShiroRealm);
+        DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
+        securityManager.setRealm(myShiroRealm);
 //      <!-- 用户授权/认证信息Cache, 采用EhCache 缓存 --> 
-        dwsm.setCacheManager(getEhCacheManager());
-        return dwsm;
+        securityManager.setCacheManager(getEhCacheManager());
+        return securityManager;
     }
 
     @Bean

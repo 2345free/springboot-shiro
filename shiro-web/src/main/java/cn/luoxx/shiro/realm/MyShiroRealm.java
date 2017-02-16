@@ -1,7 +1,5 @@
 package cn.luoxx.shiro.realm;
 
-import java.util.List;
-
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.apache.shiro.authc.AuthenticationException;
@@ -18,7 +16,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import cn.luoxx.shiro.dao.IUserDao;
-import cn.luoxx.shiro.entity.Role;
 import cn.luoxx.shiro.entity.User;
 
 public class MyShiroRealm extends AuthorizingRealm{
@@ -26,7 +23,7 @@ public class MyShiroRealm extends AuthorizingRealm{
     private static final Logger logger = LoggerFactory.getLogger(MyShiroRealm.class);
 
     @Autowired
-    private IUserDao userDao; 
+    private IUserDao userDao;
 
     /**
      * 权限认证，为当前登录的Subject授予角色和权限 
@@ -47,16 +44,17 @@ public class MyShiroRealm extends AuthorizingRealm{
             //用户的角色集合
             info.setRoles(user.getRolesName());
             //用户的角色对应的所有权限，如果只使用角色定义访问权限，下面的四行可以不要
-            List<Role> roleList=user.getRoleList();
+           /* List<Role> roleList=user.getRoleList();
             for (Role role : roleList) {
                 info.addStringPermissions(role.getPermissionsName());
-            }
+            }*/
+            
             // 或者按下面这样添加
-            //添加一个角色,不是配置意义上的添加,而是证明该用户拥有admin角色    
-//            simpleAuthorInfo.addRole("admin");  
+            //添加一个角色,不是配置意义上的添加,而是证明该用户拥有admin角色   
+            info.addRole("admin");
             //添加权限  
-//            simpleAuthorInfo.addStringPermission("admin:manage");  
-//            logger.info("已为用户[mike]赋予了[admin]角色和[admin:manage]权限");
+            info.addStringPermission("admin:manage");  
+            logger.info("已为用户[{}]赋予了[admin]角色和[admin:manage]权限",loginName);
             return info;
         }
         // 返回null的话，就会导致任何用户访问被拦截的请求时，都会自动跳转到unauthorizedUrl指定的地址
