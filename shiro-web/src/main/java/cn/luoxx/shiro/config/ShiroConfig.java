@@ -14,13 +14,22 @@ import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreato
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import cn.luoxx.shiro.dao.UserMapper;
-import cn.luoxx.shiro.filter.MShiroFilterFactoryBean;
-import cn.luoxx.shiro.security.MyShiroRealm;
+import cn.luoxx.shiro.dao.IScoreDao;
+import cn.luoxx.shiro.realm.MyShiroRealm;
+import cn.luoxx.shiro.security.MShiroFilterFactoryBean;
+import cn.luoxx.shiro.service.StudentService;
 
+/**
+ * Shiro 配置
+ *
+ * @author   单红宇(365384722)
+ * @myblog  http://blog.csdn.net/catoop/
+ * @create    2016年1月13日
+ */
 @Configuration
 public class ShiroConfig {
-	private static final Logger logger = LoggerFactory.getLogger(ShiroConfig.class);
+
+    private static final Logger logger = LoggerFactory.getLogger(ShiroConfig.class);
 
     @Bean
     public EhCacheManager getEhCacheManager() {  
@@ -94,7 +103,7 @@ public class ShiroConfig {
      * @author SHANHY
      * @create  2016年1月14日
      */
-    private void loadShiroFilterChain(ShiroFilterFactoryBean shiroFilterFactoryBean, UserMapper stuService, UserMapper scoreDao){
+    private void loadShiroFilterChain(ShiroFilterFactoryBean shiroFilterFactoryBean, StudentService stuService, IScoreDao scoreDao){
         /////////////////////// 下面这些规则配置最好配置到配置文件中 ///////////////////////
         Map<String, String> filterChainDefinitionMap = new LinkedHashMap<String, String>();
         // authc：该过滤器下的页面必须验证后才能访问，它是Shiro内置的一个拦截器org.apache.shiro.web.filter.authc.FormAuthenticationFilter
@@ -122,7 +131,7 @@ public class ShiroConfig {
      * @create  2016年1月14日
      */
     @Bean(name = "shiroFilter")
-    public ShiroFilterFactoryBean getShiroFilterFactoryBean(DefaultWebSecurityManager securityManager, UserMapper stuService, UserMapper scoreDao) {
+    public ShiroFilterFactoryBean getShiroFilterFactoryBean(DefaultWebSecurityManager securityManager, StudentService stuService, IScoreDao scoreDao) {
 
         ShiroFilterFactoryBean shiroFilterFactoryBean = new MShiroFilterFactoryBean();
         // 必须设置 SecurityManager  
@@ -136,4 +145,5 @@ public class ShiroConfig {
         loadShiroFilterChain(shiroFilterFactoryBean, stuService, scoreDao);
         return shiroFilterFactoryBean;
     }
+
 }

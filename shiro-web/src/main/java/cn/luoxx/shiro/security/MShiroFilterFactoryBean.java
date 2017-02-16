@@ -1,4 +1,4 @@
-package cn.luoxx.shiro.filter;
+package cn.luoxx.shiro.security;
 
 import java.io.IOException;
 import java.util.HashSet;
@@ -17,14 +17,8 @@ import org.apache.shiro.web.filter.mgt.PathMatchingFilterChainResolver;
 import org.apache.shiro.web.mgt.WebSecurityManager;
 import org.apache.shiro.web.servlet.AbstractShiroFilter;
 import org.springframework.beans.factory.BeanInitializationException;
+import org.apache.shiro.mgt.SecurityManager;
 
-/**
- * 继承 ShiroFilterFactoryBean 处理拦截资源文件问题。
- *
- * @author   单红宇(365384722)
- * @myblog  http://blog.csdn.net/catoop/
- * @create    2016年3月8日
- */
 public class MShiroFilterFactoryBean extends ShiroFilterFactoryBean {
 
     // 对ShiroFilter来说，需要直接忽略的请求
@@ -44,7 +38,7 @@ public class MShiroFilterFactoryBean extends ShiroFilterFactoryBean {
     @Override
     protected AbstractShiroFilter createInstance() throws Exception {
 
-        org.apache.shiro.mgt.SecurityManager securityManager = getSecurityManager();
+        SecurityManager securityManager = getSecurityManager();
         if (securityManager == null) {
             String msg = "SecurityManager property must be set.";
             throw new BeanInitializationException(msg);

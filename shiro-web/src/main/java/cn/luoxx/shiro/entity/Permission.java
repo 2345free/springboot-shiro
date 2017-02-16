@@ -1,33 +1,35 @@
 package cn.luoxx.shiro.entity;
 
 public class Permission {
+
     private Integer id;
+    
+    private String permissionname;
+    
+    private Role role;// 一个权限对应一个角色
 
-    private String permissionName;
+	public Integer getId() {
+		return id;
+	}
 
-    private Integer roleId;
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public Integer getId() {
-        return id;
-    }
+	public String getPermissionname() {
+		return permissionname;
+	}
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public void setPermissionname(String permissionname) {
+		this.permissionname = permissionname;
+	}
 
-    public String getPermissionName() {
-        return permissionName;
-    }
+	public Role getRole() {
+		return role;
+	}
 
-    public void setPermissionName(String permissionName) {
-        this.permissionName = permissionName;
-    }
-
-    public Integer getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(Integer roleId) {
-        this.roleId = roleId;
-    }
+	public void setRole(Role role) {
+		this.role = role;
+	}
+    
 }

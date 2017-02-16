@@ -1,60 +1,53 @@
 package cn.luoxx.shiro.entity;
 
-import java.beans.Transient;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class Role {
+
     private Integer id;
-
-    private String roleName;
+    private String rolename;
+    private List<Permission> permissionList;// 一个角色对应多个权限
+    private List<User> userList;// 一个角色对应多个用户
     
-    private List<Role> roleList;// 一个用户具有多个角色
-
-    public List<Role> getRoleList() {
-		return roleList;
+    public Integer getId() {
+		return id;
 	}
 
-	public void setRoleList(List<Role> roleList) {
-		this.roleList = roleList;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
-	public Integer getId() {
-        return id;
-    }
+	public String getRolename() {
+		return rolename;
+	}
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public void setRolename(String rolename) {
+		this.rolename = rolename;
+	}
 
-    public String getRoleName() {
-        return roleName;
-    }
+	public List<Permission> getPermissionList() {
+		return permissionList;
+	}
 
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
-    }
-    
-    @Transient
-    public Set<String> getRolesName() {
-        List<Role> roles = getRoleList();
-        Set<String> set = new HashSet<String>();
-        for (Role role : roles) {
-            set.add(role.getRoleName());
-        }
-        return set;
-    }
-    
-    @Transient
-    public List<String> getPermissionsName() {
+	public void setPermissionList(List<Permission> permissionList) {
+		this.permissionList = permissionList;
+	}
+
+	public List<User> getUserList() {
+		return userList;
+	}
+
+	public void setUserList(List<User> userList) {
+		this.userList = userList;
+	}
+
+	public List<String> getPermissionsName() {
         List<String> list = new ArrayList<String>();
         List<Permission> perlist = getPermissionList();
         for (Permission per : perlist) {
-            list.add(per.getPermissionName());
+            list.add(per.getPermissionname());
         }
         return list;
     }
-    
 }
