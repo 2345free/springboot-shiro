@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <% 
 	String path=request.getContextPath();
 	String basePath = request.getScheme()+"://"+request.getServerName()+(80 == request.getServerPort()?"":":"+request.getServerPort())+path+"/";
@@ -14,4 +13,8 @@
 <meta name="renderer" content="webkit" />
 <meta name="keywords" content="492222986" />
 <meta name="description" content="492222986" />
-<link type="image/x-icon" href="favorite.ico" rel="shortcut icon" />
+<!-- <link type="image/x-icon" href="favorite.ico" rel="shortcut icon" /> -->
+
+<!-- js and css -->
+<!-- Web前端资源打包成Java的Jar包，然后借助Maven这些依赖库的管理  -->
+<script type="text/javascript" src="/webjars-locator/jquery/jquery.js"></script>

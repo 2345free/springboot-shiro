@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import cn.luoxx.shiro.dao.IUserDao;
+import cn.luoxx.shiro.dao.UserDao;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
@@ -15,7 +15,7 @@ import cn.luoxx.shiro.dao.IUserDao;
 public class TestUserDao {
 	
 	@Autowired  
-    private IUserDao userDao;
+    private UserDao userDao;
 	
     @Test  
     public void testFindByName() {

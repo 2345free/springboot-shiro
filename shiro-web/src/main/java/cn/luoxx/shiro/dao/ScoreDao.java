@@ -1,5 +1,5 @@
 package cn.luoxx.shiro.dao;
 
-public interface IScoreDao {
+public interface ScoreDao {
 
 }

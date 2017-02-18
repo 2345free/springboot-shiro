@@ -51,12 +51,13 @@ import cn.luoxx.shiro.interceptor.UserSessionInterceptor;
  */
 @Configuration
 public class SpringMvcConfig extends WebMvcConfigurerAdapter {
-	
+
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(userSessionInterceptor()).addPathPatterns("/**");
+		registry.addInterceptor(this.userSessionInterceptor()).addPathPatterns("/**").excludePathPatterns("/login", "/",
+				"/health");
 	}
-	
+
 	@Bean
 	public HandlerInterceptor userSessionInterceptor() {
 		return new UserSessionInterceptor();
@@ -72,17 +73,17 @@ public class SpringMvcConfig extends WebMvcConfigurerAdapter {
 	public void addFormatters(FormatterRegistry registry) {
 		//添加注册默认的转换器和格式化
 		registry.addConverter(new Converter<String, Date>() {
-			
+
 			@Override
 			public Date convert(String source) {
-				 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-	                Date date = null;
-	                try {
-	                    date = sdf.parse(source);
-	                } catch (ParseException e) {
-	                    e.printStackTrace();
-	                }
-	                return date;
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+				Date date = null;
+				try {
+					date = sdf.parse(source);
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
+				return date;
 			}
 		});
 		super.addFormatters(registry);
@@ -101,7 +102,7 @@ public class SpringMvcConfig extends WebMvcConfigurerAdapter {
 		// TODO Auto-generated method stub
 		super.addViewControllers(registry);
 	}
-	
-	
+
+
 
 }

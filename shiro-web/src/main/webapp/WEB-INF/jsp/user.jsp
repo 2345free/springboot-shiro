@@ -30,7 +30,7 @@
     <img alt="" src="${path }/pic.jpg">
     
     <!-- Web前端资源打包成Java的Jar包，然后借助Maven这些依赖库的管理  -->
-    <script type="text/javascript" src="/webjars-locator/jquery/jquery.js">"></script>
+    <script type="text/javascript" src="/webjars-locator/jquery/jquery.js"></script>
 	<%--
 	<!-- spring boot 默认的静态资源映射规则  -->
     <script type="text/javascript" src="js/jquery.js"></script>

@@ -5,7 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/test")
+@RequestMapping("/")
 public class ThymeleafController {
 
 	@RequestMapping("/jsp")
@@ -19,4 +19,16 @@ public class ThymeleafController {
 		model.addAttribute("msg", "hello thymeleaf!");
 		return "index";
 	}
+	
+	@RequestMapping("/")
+	public String health(){
+		return "redirect:/health";
+	}
+	
+	@RequestMapping("/index")
+	public String index(Model model){
+		model.addAttribute("msg", "welcome!");
+		return "index";
+	}
+	
 }

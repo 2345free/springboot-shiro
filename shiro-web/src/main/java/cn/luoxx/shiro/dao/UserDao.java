@@ -2,7 +2,7 @@ package cn.luoxx.shiro.dao;
 
 import cn.luoxx.shiro.entity.User;
 
-public interface IUserDao {
+public interface UserDao {
 
 	User findByName(String loginName);
 

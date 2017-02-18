@@ -9,11 +9,11 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.stereotype.Repository;
 
-import cn.luoxx.shiro.dao.IUserDao;
+import cn.luoxx.shiro.dao.UserDao;
 import cn.luoxx.shiro.entity.User;
 
 @Repository("userDao")
-public class IUserDaoImpl extends BaseDao implements IUserDao{
+public class UserDaoImpl extends BaseDao implements UserDao{
 
 	@Override
 	public User findByName(String loginName) {
