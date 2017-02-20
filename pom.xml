@@ -87,5 +87,6 @@
   
   <modules>
   	<module>shiro-web</module>
+  	<module>JMS</module>
   </modules>
 </project>

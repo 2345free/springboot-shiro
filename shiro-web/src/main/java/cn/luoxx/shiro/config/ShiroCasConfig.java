@@ -31,7 +31,7 @@ public class ShiroCasConfig {
 	private static final Logger logger = LoggerFactory.getLogger(ShiroCasConfig.class);
 
 	// CasServerUrlPrefix
-	public static final String casServerUrlPrefix = "https://server.cas.com/cas";
+	public static final String casServerUrlPrefix = "https://server.cas.com/cas4.1.9";
 	// Cas登录页面地址
 	public static final String casLoginUrl = casServerUrlPrefix + "/login";
 	// Cas登出页面地址
