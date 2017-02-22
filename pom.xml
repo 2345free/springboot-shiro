@@ -87,7 +87,5 @@
   
   <modules>
   	<module>shiro-web</module>
-  	<module>JMS</module>
-  	<module>Netty</module>
   </modules>
 </project>
