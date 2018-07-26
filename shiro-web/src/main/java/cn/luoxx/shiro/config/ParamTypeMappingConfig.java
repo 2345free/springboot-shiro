@@ -1,25 +1,26 @@
 package cn.luoxx.shiro.config;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.convert.converter.Converter;
+
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.core.convert.converter.Converter;
-
 /**
  * <br>创建日期：2017年2月9日
- * <br><b>Copyright 2017 UTOUU All Rights Reserved</b>
+ * <br><b>Copyright 2017 luoxiaoxiao All Rights Reserved</b>
+ *
  * @author luoxx
- * @since 1.0
  * @version 1.0
+ * @since 1.0
  */
 @Configuration
 public class ParamTypeMappingConfig {
-	
-	@Bean
+
+    @Bean
     public Converter<String, Date> convertDate() {
         return new Converter<String, Date>() {
             @Override
@@ -36,13 +37,13 @@ public class ParamTypeMappingConfig {
         };
     }
 
-	@Bean
-	public Converter<String, Timestamp> convertTimestamp() {
-		return new Converter<String, Timestamp>() {
-			@Override
-			public Timestamp convert(String source) {
-				return Timestamp.valueOf(source);
-			}
-		};
-	}
+    @Bean
+    public Converter<String, Timestamp> convertTimestamp() {
+        return new Converter<String, Timestamp>() {
+            @Override
+            public Timestamp convert(String source) {
+                return Timestamp.valueOf(source);
+            }
+        };
+    }
 }

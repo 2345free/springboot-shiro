@@ -1,6 +1,5 @@
 package cn.luoxx.shiro.controller;
 
-import javax.servlet.http.HttpServletRequest;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,20 +10,24 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.HandlerMapping;
 import org.webjars.WebJarAssetLocator;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * 处理WebJars，自动读取版本号
- * 
+ *
+ * @author luoxiaoxiao
  */
 @Controller
 public class WebJarsController {
 
-     private final WebJarAssetLocator assetLocator = new WebJarAssetLocator();
+    private final WebJarAssetLocator assetLocator = new WebJarAssetLocator();
 
     @ResponseBody
     @RequestMapping("/webjars-locator/{webjar}/**")
     public ResponseEntity<Object> locateWebjarAsset(@PathVariable String webjar, HttpServletRequest request) {
         try {
-            String mvcPrefix = "/webjars-locator/" + webjar + "/"; // This prefix must match the mapping path!
+            // This prefix must match the mapping path!
+            String mvcPrefix = "/webjars-locator/" + webjar + "/";
             String mvcPath = (String) request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE);
             String fullPath = assetLocator.getFullPath(webjar, mvcPath.substring(mvcPrefix.length()));
             return new ResponseEntity<Object>(new ClassPathResource(fullPath), HttpStatus.OK);

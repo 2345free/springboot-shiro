@@ -5,10 +5,11 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Controller基类
+ *
  * @author luoxx
  */
 public abstract class BaseController {
 
-	protected final Logger logger=LoggerFactory.getLogger(this.getClass());
-	
+    protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+
 }
