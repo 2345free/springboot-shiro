@@ -25,13 +25,13 @@
  */
 package cn.luoxx.shiro.config;
 
-import cn.luoxx.shiro.interceptor.UserSessionInterceptor;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.format.FormatterRegistry;
-import org.springframework.web.servlet.HandlerInterceptor;
-import org.springframework.web.servlet.config.annotation.*;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -47,18 +47,6 @@ import java.util.Date;
  */
 @Configuration
 public class SpringMvcConfig extends WebMvcConfigurerAdapter {
-
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(this.userSessionInterceptor())
-                .addPathPatterns("/**")
-                .excludePathPatterns("/login", "/", "/health");
-    }
-
-    @Bean
-    public HandlerInterceptor userSessionInterceptor() {
-        return new UserSessionInterceptor();
-    }
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
@@ -95,7 +83,7 @@ public class SpringMvcConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         //添加请求路径与controller的对应关系
-        super.addViewControllers(registry);
+        registry.addRedirectViewController("/", "index.jsp");
     }
 
 
